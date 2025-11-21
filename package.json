@@ -1,0 +1,17 @@
+{
+  "name": "equity-oracle-updater",
+  "version": "1.0.0",
+  "description": "Backend oracle service to update NVIDIA prices on-chain",
+  "main": "oracle-service.js",
+  "scripts": {
+    "start": "node oracle-service.js",
+    "pm2": "pm2 start oracle-service.js --name nvidia-oracle"
+  },
+  "keywords": ["oracle", "blockchain", "nvidia", "price-feed"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.9.0",
+    "dotenv": "^16.3.1"
+  }
+}

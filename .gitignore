@@ -1,0 +1,33 @@
+# Compiler files
+cache/
+out/
+broadcast/
+
+# Environment
+.env
+.env.local
+
+# Node
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Foundry
+lib/
+
+# Deployment artifacts
+deployments/*.json
+!deployments/.gitkeep
+
+# Test artifacts
+*.log

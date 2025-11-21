@@ -1,0 +1,49 @@
+# EquityOracle Deployment on Base Sepolia -  NVIDIA PRICES
+
+
+
+## Deployer
+Deployer_Address=0xa508C2c34d17BeaeBeCC12D63B22655B712DE953
+
+## Core Infrastructure
+ManualPriceAdapter=0xbBD700ca8Fc326c90BA90A028fC1C7b36b0e9D7B
+
+## Equity Tokens (Mock ERC20)
+NVDA_Token=0x370627bb90F37907bE2293a60d77e4938b35FAbA
+
+## Price Oracles (AggregatorV2V3Interface) - REAL PRICES
+NVDA_Oracle=0xC0bC892cbA12632055B7961639E3bB6A3253B17c
+
+## Configuration
+NVDA_FeedID=0xd7f402a699378a97cf4b1f46fb772a465535d2fead1457bcb27b58312638e264
+Staleness_Timeout=21600 (6 hours)
+
+## Data Source
+Price_Source=Yahoo Finance API (https://query1.finance.yahoo.com/v8/finance/chart/NVDA)
+Update_Frequency=Every 5 minutes (via oracle-service.js)
+
+## Explorer Links
+ManualPriceAdapter_Explorer=https://sepolia.basescan.org/address/0xbBD700ca8Fc326c90BA90A028fC1C7b36b0e9D7B
+NVDA_Token_Explorer=https://sepolia.basescan.org/address/0x370627bb90F37907bE2293a60d77e4938b35FAbA
+NVDA_Oracle_Explorer=https://sepolia.basescan.org/address/0xC0bC892cbA12632055B7961639E3bB6A3253B17c
+
+## Quick Commands
+
+# Check NVDA price (REAL PRICE from Yahoo Finance)
+cast call 0xC0bC892cbA12632055B7961639E3bB6A3253B17c "latestAnswer()(int256)" --rpc-url https://sepolia.base.org
+
+# Get full price data with timestamp
+cast call 0xC0bC892cbA12632055B7961639E3bB6A3253B17c "latestRoundData()(uint80,int256,uint256,uint256,uint80)" --rpc-url https://sepolia.base.org
+
+# Check price directly from ManualPriceAdapter
+cast call 0xbBD700ca8Fc326c90BA90A028fC1C7b36b0e9D7B "prices(bytes32)(uint256,uint256,bool)" 0xd7f402a699378a97cf4b1f46fb772a465535d2fead1457bcb27b58312638e264 --rpc-url https://sepolia.base.org
+
+# Check your NVDA balance
+cast call 0x370627bb90F37907bE2293a60d77e4938b35FAbA "balanceOf(address)(uint256)" 0xa508C2c34d17BeaeBeCC12D63B22655B712DE953 --rpc-url https://sepolia.base.org
+
+# Transfer NVDA tokens
+cast send 0x370627bb90F37907bE2293a60d77e4938b35FAbA "transfer(address,uint256)" RECIPIENT_ADDRESS AMOUNT --rpc-url https://sepolia.base.org --private-key $PRIVATE_KEY
+
+# Mint more NVDA (only deployer)
+cast send 0x370627bb90F37907bE2293a60d77e4938b35FAbA "mint(address,uint256)" YOUR_ADDRESS AMOUNT --rpc-url https://sepolia.base.org --private-key $PRIVATE_KEY
+
