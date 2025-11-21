@@ -1,8 +1,6 @@
 # EquityOracle 
 
-## Overview
 
-EquityOracle provides real-time price feeds for equity tokens on Flow blockchain. The system fetches real prices from Yahoo Finance and makes them available on-chain through Chainlink-compatible oracle contracts.
 
 ## Deployed Contracts (Base Sepolia Testnet)
 
