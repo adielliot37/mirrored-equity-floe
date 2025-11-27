@@ -24,6 +24,7 @@ Thumbs.db
 
 # Foundry
 lib/
+!apps/web/src/lib/
 
 # Deployment artifacts
 deployments/*.json
